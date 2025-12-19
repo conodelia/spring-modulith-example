@@ -10,6 +10,14 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven (if used in future)
+target/
+
 # Package Files #
 # Exception: gradle-wrapper.jar should be committed
 !gradle/wrapper/gradle-wrapper.jar
