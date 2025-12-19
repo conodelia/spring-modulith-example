@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ArchUnit Architecture Verification" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-12-19T20:30:35" hostname="Conos-Mac-Studio.local" time="0.445">
+  <properties/>
+  <testcase name="domainShouldNotDependOnApplication()" classname="com.bank.transfers.ArchitectureTest" time="0.025"/>
+  <testcase name="Verify ArchUnit detects adapters not depending on ports (demonstration)" classname="com.bank.transfers.ArchitectureTest" time="0.019"/>
+  <testcase name="domainShouldNotDependOnAdapters()" classname="com.bank.transfers.ArchitectureTest" time="0.004"/>
+  <testcase name="Verify ArchUnit detects non-interface ports (demonstration)" classname="com.bank.transfers.ArchitectureTest" time="0.001"/>
+  <system-out><![CDATA[15:30:34.547 [Test worker] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 17.0.17
+=== Detected Adapter Violations ===
+Expected: Adapters should depend on ports or domain classes
+Violations found: 2
+  - Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.customerId> has type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.currencyCode> has type <java.lang.String> in (TransfersController.java:0)
+Constructor <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.<init>(java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)> calls constructor <java.lang.Record.<init>()> in (TransfersController.java:99)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.toAccountId> has type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.fromAccountId> has type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.idempotencyKey> has type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.amount> has type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.memo> has type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.fromAccountId()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.memo()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.correlationIds()> has return type <java.lang.String> in (TransfersController.java:0)
+Class <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest> extends class <java.lang.Record> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.idempotencyKey()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.currencyCode()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.equals(java.lang.Object)> has parameter of type <java.lang.Object> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.toAccountId()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.amount()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.customerId()> has return type <java.lang.String> in (TransfersController.java:0)
+Constructor <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.<init>(java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)> has parameter of type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.railType()> has return type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.correlationIds> has type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.requestedExecutionDate()> has return type <java.lang.String> in (TransfersController.java:0)
+Method <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.toString()> has return type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.requestedExecutionDate> has type <java.lang.String> in (TransfersController.java:0)
+Field <com.bank.transfers.initiation.adapter.in.web.TransfersController$CreateTransferRequest.railType> has type <java.lang.String> in (TransfersController.java:0)
+  - Method <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.equals(java.lang.Object)> has parameter of type <java.lang.Object> in (BeneficiariesController.java:0)
+Field <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.institutionName> has type <java.lang.String> in (BeneficiariesController.java:0)
+Method <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.customerId()> has return type <java.lang.String> in (BeneficiariesController.java:0)
+Class <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest> extends class <java.lang.Record> in (BeneficiariesController.java:0)
+Method <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.displayName()> has return type <java.lang.String> in (BeneficiariesController.java:0)
+Method <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.toString()> has return type <java.lang.String> in (BeneficiariesController.java:0)
+Method <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.institutionName()> has return type <java.lang.String> in (BeneficiariesController.java:0)
+Constructor <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.<init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String)> has parameter of type <java.lang.String> in (BeneficiariesController.java:0)
+Field <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.tokenizedReference> has type <java.lang.String> in (BeneficiariesController.java:0)
+Constructor <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.<init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String)> calls constructor <java.lang.Record.<init>()> in (BeneficiariesController.java:59)
+Method <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.tokenizedReference()> has return type <java.lang.String> in (BeneficiariesController.java:0)
+Field <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.displayName> has type <java.lang.String> in (BeneficiariesController.java:0)
+Field <com.bank.transfers.beneficiaries.adapter.in.web.BeneficiariesController$AddBeneficiaryRequest.customerId> has type <java.lang.String> in (BeneficiariesController.java:0)
+=== Detected Port Violations ===
+Expected: All classes in ..port.. packages should be interfaces
+Violations found: 4
+  - Class <com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase$AddBeneficiaryCommand> is no interface in (AddBeneficiaryUseCase.java:0)
+  - Class <com.bank.transfers.initiation.application.port.in.AuthorizeTransferUseCase$AuthorizeTransferCommand> is no interface in (AuthorizeTransferUseCase.java:0)
+  - Class <com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand> is no interface in (CreateTransferUseCase.java:0)
+  - Class <com.bank.transfers.initiation.application.port.out.RiskPort$RiskAssessment> is no interface in (RiskPort.java:0)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

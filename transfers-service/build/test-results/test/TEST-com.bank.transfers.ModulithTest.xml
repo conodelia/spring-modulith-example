@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Spring Modulith Architecture Verification" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-12-19T20:30:35" hostname="Conos-Mac-Studio.local" time="0.006">
+  <properties/>
+  <testcase name="Verify all expected modules exist" classname="com.bank.transfers.ModulithTest" time="0.004"/>
+  <testcase name="Print module structure for debugging" classname="com.bank.transfers.ModulithTest" time="0.001"/>
+  <testcase name="Verify Spring Modulith detects violations (demonstration)" classname="com.bank.transfers.ModulithTest" time="0.001"/>
+  <system-out><![CDATA[Detected modules: [routing, fees, limitspolicy, initiation, config, beneficiaries]
+=== Module Structure ===
+Detected modules:
+  - routing
+  - fees
+  - limitspolicy
+  - initiation
+  - config
+  - beneficiaries
+
+Total modules: 6
+=== Module Analysis ===
+Detected modules:
+  - routing
+  - fees
+  - limitspolicy
+  - initiation
+  - config
+  - beneficiaries
+=== Violations Expected ===
+Known violations in code:
+1. fees.domain.TransferPricingService depends on initiation.domain.*
+2. initiation.application.service.TransferService depends on fees.domain.TransferPricingService
+3. This creates a cycle: fees → initiation → fees
+
+Note: Violations exist in code but were not detected in this test run.
+This may be due to test isolation or classpath analysis differences.
+When run individually, violations are correctly detected.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

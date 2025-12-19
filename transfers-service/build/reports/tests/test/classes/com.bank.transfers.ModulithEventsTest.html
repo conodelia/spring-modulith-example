@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Spring Modulith Events Verification</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Spring Modulith Events Verification</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.bank.transfers.html">com.bank.transfers</a> &gt; ModulithEventsTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.178s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Verify Spring Modulith detects event-related violations</td>
+<td class="success">verifyEventViolationsDetected()</td>
+<td class="success">0.040s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Verify module structure exists</td>
+<td class="success">verifyModuleStructureExists()</td>
+<td class="success">0.138s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Initiation module: true
+Beneficiaries module: true
+=== Event-Related Violations Detected ===
+Events crossing module boundaries should be in api packages or externalized
+
+Full violations message:
+org.springframework.modulith.core.Violations: - Cycle detected: Slice fees -&gt; 
+                Slice initiation -&gt; 
+                Slice fees
+  1. Dependencies of Slice fees
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferPricingService.java:0)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.RailType&gt; in (TransferPricingService.java:0)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; has return type &lt;com.bank.transfers.initiation.domain.TransferFee&gt; in (TransferPricingService.java:0)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.shouldApplyFee(com.bank.transfers.initiation.domain.RailType)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.RailType&gt; in (TransferPricingService.java:0)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.RailType.ordinal()&gt; in (TransferPricingService.java:26)
+    - Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; calls method &lt;com.bank.transfers.initiation.domain.RailType.ordinal()&gt; in (TransferPricingService.java:26)
+    - Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; calls method &lt;com.bank.transfers.initiation.domain.RailType.values()&gt; in (TransferPricingService.java:26)
+    - Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.ACH&gt; in (TransferPricingService.java:26)
+    - Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERAC&gt; in (TransferPricingService.java:26)
+    - Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERNAL&gt; in (TransferPricingService.java:26)
+    - Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.WIRE&gt; in (TransferPricingService.java:26)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getCurrencyCode()&gt; in (TransferPricingService.java:44)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferFee.zero(java.lang.String)&gt; in (TransferPricingService.java:44)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getCurrencyCode()&gt; in (TransferPricingService.java:47)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.of(java.math.BigDecimal, java.lang.String)&gt; in (TransferPricingService.java:47)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferFee.of(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.FeeType)&gt; in (TransferPricingService.java:48)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; gets field &lt;com.bank.transfers.initiation.domain.FeeType.FLAT&gt; in (TransferPricingService.java:48)
+    - Method &lt;com.bank.transfers.fees.domain.TransferPricingService.shouldApplyFee(com.bank.transfers.initiation.domain.RailType)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERNAL&gt; in (TransferPricingService.java:55)
+  2. Dependencies of Slice initiation
+    - Constructor &lt;com.bank.transfers.initiation.application.service.TransferService.&lt;init&gt;(com.bank.transfers.initiation.application.port.out.TransferRepositoryPort, com.bank.transfers.routing.domain.TransferRoutingService, com.bank.transfers.fees.domain.TransferPricingService, com.bank.transfers.initiation.application.port.out.AccountsPort, com.bank.transfers.initiation.application.port.out.IdentityPort, com.bank.transfers.initiation.application.port.out.RiskPort, org.springframework.context.ApplicationEventPublisher)&gt; has parameter of type &lt;com.bank.transfers.fees.domain.TransferPricingService&gt; in (TransferService.java:0)
+    - Field &lt;com.bank.transfers.initiation.application.service.TransferService.pricingService&gt; has type &lt;com.bank.transfers.fees.domain.TransferPricingService&gt; in (TransferService.java:0)
+    - Method &lt;com.bank.transfers.initiation.application.service.TransferService.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; calls method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; in (TransferService.java:80)
+- Cycle detected: Slice initiation -&gt; 
+                Slice routing -&gt; 
+                Slice initiation
+  1. Dependencies of Slice initiation
+    - Constructor &lt;com.bank.transfers.initiation.application.service.TransferService.&lt;init&gt;(com.bank.transfers.initiation.application.port.out.TransferRepositoryPort, com.bank.transfers.routing.domain.TransferRoutingService, com.bank.transfers.fees.domain.TransferPricingService, com.bank.transfers.initiation.application.port.out.AccountsPort, com.bank.transfers.initiation.application.port.out.IdentityPort, com.bank.transfers.initiation.application.port.out.RiskPort, org.springframework.context.ApplicationEventPublisher)&gt; has parameter of type &lt;com.bank.transfers.routing.domain.TransferRoutingService&gt; in (TransferService.java:0)
+    - Field &lt;com.bank.transfers.initiation.application.service.TransferService.routingService&gt; has type &lt;com.bank.transfers.routing.domain.TransferRoutingService&gt; in (TransferService.java:0)
+    - Method &lt;com.bank.transfers.initiation.application.service.TransferService.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; calls method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; in (TransferService.java:57)
+  2. Dependencies of Slice routing
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Destination&gt; in (TransferRoutingService.java:0)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferRoutingService.java:0)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; has return type &lt;com.bank.transfers.initiation.domain.RailType&gt; in (TransferRoutingService.java:0)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; calls method &lt;com.bank.transfers.initiation.domain.Destination.isInternal()&gt; in (TransferRoutingService.java:23)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERNAL&gt; in (TransferRoutingService.java:24)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getAmount()&gt; in (TransferRoutingService.java:33)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERAC&gt; in (TransferRoutingService.java:35)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.ACH&gt; in (TransferRoutingService.java:37)
+    - Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.WIRE&gt; in (TransferRoutingService.java:39)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.Destination within module 'initiation'!
+Destination declares parameter Destination.determineRail(Destination, Money, String, Instant) in (TransferRoutingService.java:0)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.determineRail(Destination, Money, String, Instant) in (TransferRoutingService.java:0)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+RailType declares return type RailType.determineRail(Destination, Money, String, Instant) in (TransferRoutingService.java:0)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERAC&gt; in (TransferRoutingService.java:35)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.WIRE&gt; in (TransferRoutingService.java:39)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.ACH&gt; in (TransferRoutingService.java:37)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERNAL&gt; in (TransferRoutingService.java:24)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getAmount()&gt; in (TransferRoutingService.java:33)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.Destination within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; calls method &lt;com.bank.transfers.initiation.domain.Destination.isInternal()&gt; in (TransferRoutingService.java:23)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; has return type &lt;com.bank.transfers.initiation.domain.RailType&gt; in (TransferRoutingService.java:0)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.Destination within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Destination&gt; in (TransferRoutingService.java:0)
+- Module 'routing' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferRoutingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+RailType declares parameter RailType.calculateFee(RailType, Money) in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.calculateFee(RailType, Money) in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+RailType declares parameter RailType.shouldApplyFee(RailType) in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.TransferFee within module 'initiation'!
+TransferFee declares return type TransferFee.calculateFee(RailType, Money) in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.FeeType within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; gets field &lt;com.bank.transfers.initiation.domain.FeeType.FLAT&gt; in (TransferPricingService.java:48)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.shouldApplyFee(com.bank.transfers.initiation.domain.RailType)&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERNAL&gt; in (TransferPricingService.java:55)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.TransferFee within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferFee.zero(java.lang.String)&gt; in (TransferPricingService.java:44)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getCurrencyCode()&gt; in (TransferPricingService.java:47)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getCurrencyCode()&gt; in (TransferPricingService.java:44)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.RailType.ordinal()&gt; in (TransferPricingService.java:26)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.of(java.math.BigDecimal, java.lang.String)&gt; in (TransferPricingService.java:47)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.TransferFee within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferFee.of(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.FeeType)&gt; in (TransferPricingService.java:48)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.TransferFee within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; has return type &lt;com.bank.transfers.initiation.domain.TransferFee&gt; in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.RailType&gt; in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Method &lt;com.bank.transfers.fees.domain.TransferPricingService.shouldApplyFee(com.bank.transfers.initiation.domain.RailType)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.RailType&gt; in (TransferPricingService.java:0)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.WIRE&gt; in (TransferPricingService.java:26)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERNAL&gt; in (TransferPricingService.java:26)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.ACH&gt; in (TransferPricingService.java:26)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; gets field &lt;com.bank.transfers.initiation.domain.RailType.INTERAC&gt; in (TransferPricingService.java:26)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; calls method &lt;com.bank.transfers.initiation.domain.RailType.ordinal()&gt; in (TransferPricingService.java:26)
+- Module 'fees' depends on non-exposed type com.bank.transfers.initiation.domain.RailType within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.fees.domain.TransferPricingService$1.&lt;clinit&gt;()&gt; calls method &lt;com.bank.transfers.initiation.domain.RailType.values()&gt; in (TransferPricingService.java:26)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.recordTransfer(Money) in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.updateDailyLimit(Money) in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.checkLimit(Money, String) in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.create(String, Money) in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares return type Money.getDailyLimit() in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.checkLimit(com.bank.transfers.initiation.domain.Money, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.getAmount()&gt; in (TransferLimitProfile.java:85)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.checkLimit(com.bank.transfers.initiation.domain.Money, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.isGreaterThan(com.bank.transfers.initiation.domain.Money)&gt; in (TransferLimitProfile.java:78)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Field &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.dailyLimit&gt; has type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.getDailyLimit()&gt; has return type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.create(java.lang.String, com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.updateDailyLimit(com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.checkLimit(com.bank.transfers.initiation.domain.Money, java.lang.String)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.recordTransfer(com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Constructor &lt;com.bank.transfers.limitspolicy.domain.TransferLimitProfile.&lt;init&gt;(java.lang.String, com.bank.transfers.initiation.domain.Money)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferLimitProfile.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.requiresStepUp(Money, AuthorizationContext, String) in (TransferPolicyService.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.AuthorizationContext within module 'initiation'!
+AuthorizationContext declares parameter AuthorizationContext.requiresStepUp(Money, AuthorizationContext, String) in (TransferPolicyService.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Money declares parameter Money.shouldBlock(Money, String, String) in (TransferPolicyService.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.AuthStrength within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; gets field &lt;com.bank.transfers.initiation.domain.AuthStrength.WEAK&gt; in (TransferPolicyService.java:30)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.shouldBlock(com.bank.transfers.initiation.domain.Money, java.lang.String, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.of(java.math.BigDecimal, java.lang.String)&gt; in (TransferPolicyService.java:51)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.shouldBlock(com.bank.transfers.initiation.domain.Money, java.lang.String, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.isGreaterThan(com.bank.transfers.initiation.domain.Money)&gt; in (TransferPolicyService.java:51)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.AuthorizationContext within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.AuthorizationContext.getDeviceRiskScore()&gt; in (TransferPolicyService.java:35)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.AuthorizationContext within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.AuthorizationContext.getAuthStrength()&gt; in (TransferPolicyService.java:30)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.isGreaterThan(com.bank.transfers.initiation.domain.Money)&gt; in (TransferPolicyService.java:26)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.AuthorizationContext within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; calls method &lt;com.bank.transfers.initiation.domain.AuthorizationContext.getDeviceRiskScore()&gt; in (TransferPolicyService.java:34)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Static Initializer &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.&lt;clinit&gt;()&gt; calls method &lt;com.bank.transfers.initiation.domain.Money.of(java.math.BigDecimal, java.lang.String)&gt; in (TransferPolicyService.java:11)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Field &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.STEP_UP_THRESHOLD&gt; has type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferPolicyService.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.shouldBlock(com.bank.transfers.initiation.domain.Money, java.lang.String, java.lang.String)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferPolicyService.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.Money within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.Money&gt; in (TransferPolicyService.java:0)
+- Module 'limitspolicy' depends on non-exposed type com.bank.transfers.initiation.domain.AuthorizationContext within module 'initiation'!
+Method &lt;com.bank.transfers.limitspolicy.domain.TransferPolicyService.requiresStepUp(com.bank.transfers.initiation.domain.Money, com.bank.transfers.initiation.domain.AuthorizationContext, java.lang.String)&gt; has parameter of type &lt;com.bank.transfers.initiation.domain.AuthorizationContext&gt; in (TransferPolicyService.java:0)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.routing.domain.TransferRoutingService within module 'routing'!
+TransferService declares constructor TransferService(TransferRepositoryPort, TransferRoutingService, TransferPricingService, AccountsPort, IdentityPort, RiskPort, ApplicationEventPublisher) in (TransferService.java:0)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.fees.domain.TransferPricingService within module 'fees'!
+TransferService declares constructor TransferService(TransferRepositoryPort, TransferRoutingService, TransferPricingService, AccountsPort, IdentityPort, RiskPort, ApplicationEventPublisher) in (TransferService.java:0)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.routing.domain.TransferRoutingService within module 'routing'!
+Method &lt;com.bank.transfers.initiation.application.service.TransferService.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; calls method &lt;com.bank.transfers.routing.domain.TransferRoutingService.determineRail(com.bank.transfers.initiation.domain.Destination, com.bank.transfers.initiation.domain.Money, java.lang.String, java.time.Instant)&gt; in (TransferService.java:57)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.fees.domain.TransferPricingService within module 'fees'!
+Method &lt;com.bank.transfers.initiation.application.service.TransferService.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; calls method &lt;com.bank.transfers.fees.domain.TransferPricingService.calculateFee(com.bank.transfers.initiation.domain.RailType, com.bank.transfers.initiation.domain.Money)&gt; in (TransferService.java:80)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.routing.domain.TransferRoutingService within module 'routing'!
+Field &lt;com.bank.transfers.initiation.application.service.TransferService.routingService&gt; has type &lt;com.bank.transfers.routing.domain.TransferRoutingService&gt; in (TransferService.java:0)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.fees.domain.TransferPricingService within module 'fees'!
+Field &lt;com.bank.transfers.initiation.application.service.TransferService.pricingService&gt; has type &lt;com.bank.transfers.fees.domain.TransferPricingService&gt; in (TransferService.java:0)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.routing.domain.TransferRoutingService within module 'routing'!
+Constructor &lt;com.bank.transfers.initiation.application.service.TransferService.&lt;init&gt;(com.bank.transfers.initiation.application.port.out.TransferRepositoryPort, com.bank.transfers.routing.domain.TransferRoutingService, com.bank.transfers.fees.domain.TransferPricingService, com.bank.transfers.initiation.application.port.out.AccountsPort, com.bank.transfers.initiation.application.port.out.IdentityPort, com.bank.transfers.initiation.application.port.out.RiskPort, org.springframework.context.ApplicationEventPublisher)&gt; has parameter of type &lt;com.bank.transfers.routing.domain.TransferRoutingService&gt; in (TransferService.java:0)
+- Module 'initiation' depends on non-exposed type com.bank.transfers.fees.domain.TransferPricingService within module 'fees'!
+Constructor &lt;com.bank.transfers.initiation.application.service.TransferService.&lt;init&gt;(com.bank.transfers.initiation.application.port.out.TransferRepositoryPort, com.bank.transfers.routing.domain.TransferRoutingService, com.bank.transfers.fees.domain.TransferPricingService, com.bank.transfers.initiation.application.port.out.AccountsPort, com.bank.transfers.initiation.application.port.out.IdentityPort, com.bank.transfers.initiation.application.port.out.RiskPort, org.springframework.context.ApplicationEventPublisher)&gt; has parameter of type &lt;com.bank.transfers.fees.domain.TransferPricingService&gt; in (TransferService.java:0)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase within module 'initiation'!
+DataInitializer declares constructor DataInitializer(CreateTransferUseCase, AddBeneficiaryUseCase) in (DataInitializer.java:0)
+- Module 'config' depends on non-exposed type com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase within module 'beneficiaries'!
+DataInitializer declares constructor DataInitializer(CreateTransferUseCase, AddBeneficiaryUseCase) in (DataInitializer.java:0)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; in (DataInitializer.java:53)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; in (DataInitializer.java:37)
+- Module 'config' depends on non-exposed type com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase within module 'beneficiaries'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase.addBeneficiary(com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase$AddBeneficiaryCommand)&gt; in (DataInitializer.java:25)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase.createTransfer(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand)&gt; in (DataInitializer.java:69)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.domain.TransferId within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferId.generate()&gt; in (DataInitializer.java:70)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.domain.TransferId within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferId.generate()&gt; in (DataInitializer.java:38)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.domain.TransferId within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls method &lt;com.bank.transfers.initiation.domain.TransferId.generate()&gt; in (DataInitializer.java:54)
+- Module 'config' depends on non-exposed type com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase$AddBeneficiaryCommand within module 'beneficiaries'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls constructor &lt;com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase$AddBeneficiaryCommand.&lt;init&gt;(java.lang.String, java.lang.String, java.lang.String, java.lang.String)&gt; in (DataInitializer.java:25)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls constructor &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand.&lt;init&gt;(com.bank.transfers.initiation.domain.TransferId, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)&gt; in (DataInitializer.java:78)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls constructor &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand.&lt;init&gt;(com.bank.transfers.initiation.domain.TransferId, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)&gt; in (DataInitializer.java:46)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand within module 'initiation'!
+Method &lt;com.bank.transfers.config.DataInitializer.run([Ljava.lang.String;)&gt; calls constructor &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase$CreateTransferCommand.&lt;init&gt;(com.bank.transfers.initiation.domain.TransferId, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)&gt; in (DataInitializer.java:62)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase within module 'initiation'!
+Field &lt;com.bank.transfers.config.DataInitializer.createTransferUseCase&gt; has type &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase&gt; in (DataInitializer.java:0)
+- Module 'config' depends on non-exposed type com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase within module 'beneficiaries'!
+Field &lt;com.bank.transfers.config.DataInitializer.addBeneficiaryUseCase&gt; has type &lt;com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase&gt; in (DataInitializer.java:0)
+- Module 'config' depends on non-exposed type com.bank.transfers.initiation.application.port.in.CreateTransferUseCase within module 'initiation'!
+Constructor &lt;com.bank.transfers.config.DataInitializer.&lt;init&gt;(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase, com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase)&gt; has parameter of type &lt;com.bank.transfers.initiation.application.port.in.CreateTransferUseCase&gt; in (DataInitializer.java:0)
+- Module 'config' depends on non-exposed type com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase within module 'beneficiaries'!
+Constructor &lt;com.bank.transfers.config.DataInitializer.&lt;init&gt;(com.bank.transfers.initiation.application.port.in.CreateTransferUseCase, com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase)&gt; has parameter of type &lt;com.bank.transfers.beneficiaries.application.port.in.AddBeneficiaryUseCase&gt; in (DataInitializer.java:0)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.5</a> at Dec. 19, 2025, 3:30:36 p.m.</p>
+</div>
+</div>
+</body>
+</html>

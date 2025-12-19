@@ -1,4 +1,5 @@
 rootProject.name = 'spring-modulith-example'
 
 include 'accounts-service'
+include 'transfers-service'
 
