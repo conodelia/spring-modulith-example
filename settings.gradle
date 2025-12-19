@@ -1,0 +1,4 @@
+rootProject.name = 'spring-modulith-example'
+
+include 'accounts-service'
+
