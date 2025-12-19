@@ -11,6 +11,8 @@
 .mtj.tmp/
 
 # Package Files #
+# Exception: gradle-wrapper.jar should be committed
+!gradle/wrapper/gradle-wrapper.jar
 *.jar
 *.war
 *.nar

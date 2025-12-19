@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bank.transfers.ServiceBoundaryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-12-19T20:30:35" hostname="Conos-Mac-Studio.local" time="0.211">
-  <properties/>
-  <testcase name="transfersServiceShouldNotImportAccountsServiceClasses()" classname="com.bank.transfers.ServiceBoundaryTest" time="0.003"/>
-  <testcase name="transfersServiceShouldNotHaveDirectClassDependenciesOnAccountsService()" classname="com.bank.transfers.ServiceBoundaryTest" time="0.005"/>
-  <testcase name="transfersServiceShouldNotDependOnAccountsService()" classname="com.bank.transfers.ServiceBoundaryTest" time="0.008"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
