@@ -1,9 +1,13 @@
 package com.bank.accounts.balances.domain;
 
 import com.bank.accounts.lifecycle.domain.AccountId;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Version;
 import lombok.Getter;
-import org.jmolecules.ddd.annotation.Entity;
 
 import java.math.BigDecimal;
 import java.time.Instant;
