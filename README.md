@@ -1,10 +1,14 @@
-# Spring Modulith Accounts Bounded Context
+# Spring Modulith Banking Bounded Contexts
 
 This project demonstrates Spring Modulith, ArchUnit, and jMolecules for enforcing DDD and architectural standards in a retail banking domain.
 
 ## Architecture
 
-The Accounts bounded context is split into 7 submodules following hexagonal architecture:
+This project contains two Spring Boot services, each implementing a bounded context with multiple submodules following hexagonal architecture:
+
+### Accounts Bounded Context
+
+The Accounts bounded context is split into 7 submodules:
 
 - **lifecycle**: Account lifecycle management (open, close, status changes)
 - **posting**: Core transaction posting engine
@@ -13,6 +17,16 @@ The Accounts bounded context is split into 7 submodules following hexagonal arch
 - **balances**: Balance read model (event-driven)
 - **statements**: Statement generation (event-driven)
 - **history**: Transaction history read model (event-driven)
+
+### Transfers Bounded Context
+
+The Transfers bounded context is split into 5 submodules:
+
+- **initiation**: Transfer creation, submission, authorization, and lifecycle management (Transfer aggregate root)
+- **beneficiaries**: Beneficiary enrollment, verification, and management
+- **fees**: Transfer fee calculation based on rail type (INTERNAL, INTERAC, ACH, WIRE)
+- **routing**: Transfer rail selection logic based on destination, amount, currency, and timing
+- **limitspolicy**: Transfer limits and policy enforcement (step-up authentication, risk assessment)
 
 ## Running Tests
 
@@ -375,6 +389,47 @@ com.bank.accounts/
 └── history/            → Module: history
 ```
 
+#### Modulith Marker Interfaces
+
+Each bounded context uses a marker interface annotated with `@Modulith` to enable Spring Modulith analysis:
+
+**Accounts Bounded Context:**
+```java
+package com.bank.accounts;
+
+import org.springframework.modulith.Modulith;
+
+@Modulith
+public interface AccountsModule {
+}
+```
+
+**Transfers Bounded Context:**
+```java
+package com.bank.transfers;
+
+import org.springframework.modulith.Modulith;
+
+@Modulith
+public interface TransfersModule {
+}
+```
+
+**Purpose:**
+- **Mark the package as a Modulith application**: The `@Modulith` annotation tells Spring Modulith to analyze the package structure
+- **Enable architectural verification**: Spring Modulith uses this to detect modules and enforce architectural boundaries
+- **Do NOT need implementations**: These are marker interfaces - they are not meant to be implemented by any classes
+
+**How it works:**
+- The `@Modulith` annotation is processed by Spring Modulith at runtime/compile time
+- Spring Modulith scans the package structure starting from the marker interface's package (e.g., `com.bank.accounts.*`)
+- The framework identifies submodules based on first-level subdirectories under the base package
+- In tests, you reference the `@SpringBootApplication` class (e.g., `AccountsApplication.class`), not the marker interface
+
+**Location in codebase:**
+- `accounts-service/src/main/java/com/bank/accounts/AccountsModule.java`
+- `transfers-service/src/main/java/com/bank/transfers/TransfersModule.java`
+
 ### 4. API Package Rules
 
 Spring Modulith enforces that:
@@ -398,13 +453,69 @@ Modules communicate via events:
 Generate module documentation with diagrams:
 
 ```bash
+# For accounts-service
+./gradlew :accounts-service:test --tests ModulithTest.generateDocumentation
+
+# For transfers-service
+./gradlew :transfers-service:test --tests ModulithTest.generateDocumentation
+
+# For all services
 ./gradlew test --tests ModulithTest.generateDocumentation
 ```
 
-This creates documentation in `target/spring-modulith-docs/` including:
-- Module structure diagrams (UML)
-- C4 component diagrams
-- Dependency graphs
+This creates documentation in `build/spring-modulith-docs/` (relative to each service directory). The following document types are generated:
+
+#### Document Types
+
+1. **`all-docs.adoc`** - Master AsciiDoc file
+   - Aggregates all module documentation into a single document
+   - Includes PlantUML diagram references for rendering
+   - Can be processed with AsciiDoc tooling to generate HTML/PDF documentation
+   - Contains sections for each module with its diagrams and metadata
+
+2. **`components.puml`** - Application-level C4 Component Diagram
+   - PlantUML diagram showing the complete application structure
+   - Uses C4 model notation for component visualization
+   - Displays all modules and their inter-module relationships
+   - Shows dependency types: "uses", "depends on", "listens to" (event-driven)
+   - Provides a high-level architectural overview of the entire application
+
+3. **`module-{name}.adoc`** - Module Metadata Files (AsciiDoc)
+   - One file per module containing structured metadata
+   - Includes:
+     - Base package name for the module
+     - Bean references (dependencies on beans from other modules)
+     - Module dependencies and relationships
+   - Formatted as AsciiDoc tables for easy reading
+
+4. **`module-{name}.puml`** - Module-level C4 Component Diagrams
+   - PlantUML diagram for each individual module
+   - Uses C4 component model notation
+   - Shows the module's internal structure and boundaries
+   - Displays how the module relates to the overall application context
+   - Useful for understanding individual module architecture
+
+#### Example Generated Files
+
+**accounts-service** generates:
+- `all-docs.adoc`, `components.puml`
+- `module-lifecycle.adoc`, `module-lifecycle.puml`
+- `module-posting.adoc`, `module-posting.puml`
+- `module-balances.adoc`, `module-balances.puml`
+- `module-holds.adoc`, `module-holds.puml`
+- `module-pricing.adoc`, `module-pricing.puml`
+- `module-statements.adoc`, `module-statements.puml`
+- `module-history.adoc`, `module-history.puml`
+- `module-adapter.adoc`, `module-adapter.puml`
+- `module-config.adoc`, `module-config.puml`
+
+**transfers-service** generates similar files for its modules (initiation, beneficiaries, fees, routing, limitspolicy, config).
+
+#### Viewing the Documentation
+
+- **PlantUML files (`.puml`)**: Can be rendered using PlantUML tools, IDEs with PlantUML plugins, or online viewers
+- **AsciiDoc files (`.adoc`)**: Can be processed with AsciiDoc/Asciidoctor to generate HTML, PDF, or other formats
+- **Master document**: Process `all-docs.adoc` to generate a complete documentation set with all diagrams embedded
 
 ### 7. Continuous Validation
 

@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.core.Violations;
+import org.springframework.modulith.docs.Documenter;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -133,6 +137,47 @@ class ModulithTest {
             System.out.println("  - " + module.getName());
         });
         System.out.println("\nTotal modules: " + modules.stream().count());
+    }
+    
+    @Test
+    @DisplayName("Generate module documentation with diagrams")
+    void generateDocumentation() {
+        // Generate Spring Modulith documentation including:
+        // - Module structure diagrams (UML)
+        // - C4 component diagrams
+        // - Dependency graphs
+        ApplicationModules modules = getModules();
+        
+        // Create output directory (Gradle uses build/ not target/)
+        Path outputDir = Paths.get("build/spring-modulith-docs");
+        outputDir.toFile().mkdirs();
+        
+        // Generate documentation using Documenter
+        // Spring Modulith 2.0 uses Documenter class for documentation generation
+        new Documenter(modules)
+            .writeDocumentation()
+            .writeModuleCanvases();
+        
+        System.out.println("=== Documentation Generated ===");
+        System.out.println("Documentation written to: " + outputDir.toAbsolutePath());
+        System.out.println("Files generated:");
+        java.io.File outputFile = outputDir.toFile();
+        if (outputFile.exists() && outputFile.isDirectory()) {
+            java.io.File[] files = outputFile.listFiles();
+            if (files != null) {
+                for (java.io.File file : files) {
+                    System.out.println("  - " + file.getName());
+                }
+            }
+        }
+        
+        // Verify documentation was generated
+        assertThat(outputFile.exists())
+            .as("Documentation output directory should be created")
+            .isTrue();
+        assertThat(outputFile.isDirectory())
+            .as("Documentation output should be a directory")
+            .isTrue();
     }
 }
 

@@ -50,6 +50,7 @@ dependencies {
     // Spring Boot 4.0: Add test autoconfigure for @MockBean support
     testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
     testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
+    testImplementation 'org.springframework.modulith:spring-modulith-docs'
     testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
     // Note: jmolecules-archunit might not be available in 1.5.0
     // testImplementation 'org.jmolecules:jmolecules-archunit:1.5.0'

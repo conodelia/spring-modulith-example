@@ -48,6 +48,7 @@ dependencies {
     // Spring Boot 4.0: Test modules are now separate - add webmvc test module for @WebMvcTest
     testImplementation 'org.springframework.boot:spring-boot-webmvc-test'
     testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
+    testImplementation 'org.springframework.modulith:spring-modulith-docs'
     testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
 }
 
